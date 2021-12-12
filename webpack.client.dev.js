@@ -11,6 +11,10 @@ module.exports = {
   module: {
     rules: [
       {
+        resourceQuery: /raw/,
+        type: 'asset/source'
+      },
+      {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
