@@ -1,5 +1,6 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
+const { ModuleFederationPlugin } = require('webpack').container
 
 module.exports = {
   entry: './server/index.js',
@@ -28,6 +29,15 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    // To learn more about the usage of this plugin, please visit https://webpack.js.org/plugins/module-federation-plugin/
+    new ModuleFederationPlugin({
+      name: 'poc',
+      remotes: {
+        grow: 'grow@http://localhost:8080/build/client/remoteEntry.js'
+      }
+    })
+  ],
   externals: [
     nodeExternals()
   ]

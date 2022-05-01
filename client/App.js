@@ -1,10 +1,16 @@
 import React, { useState } from 'react'
-import Hello from './Components/Hello'
+import Hellos from './Components/Hello'
+
+const Hello = React.lazy(() => import('grow/grow'));
 
 const AppComponent = () => {
   const [name] = useState('world')
 
-  return <Hello name={name} />
+  return (<>
+  <Hellos name={name} />
+  <Hello/>
+  </>
+)
 }
 
 export default AppComponent
