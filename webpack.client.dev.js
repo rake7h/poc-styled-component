@@ -34,7 +34,8 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         './Header': './client/Components/Header.js'
-      }
+      },
+      shared: ['react', 'react-dom', 'styled-components']
     })
   ]
 }
