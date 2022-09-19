@@ -10,7 +10,7 @@ const serverTemplate = ({ html, css }) => {
       <!-- Required meta tags -->
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>React SSR app</title>
+      <title>Remote</title>
       ${css}
     </head>
     <body>

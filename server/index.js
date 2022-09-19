@@ -9,5 +9,6 @@ app.listen(port, () => {
 })
 
 app.use('/build/client', express.static('build/client'))
+app.use('/remoteEntry.js', express.static('build/client/remoteEntry.js'))
 
 app.get('/', renderOnServer)

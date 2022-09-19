@@ -7,15 +7,13 @@ module.exports = {
   mode: 'development',
   output: {
     path: path.resolve('./build/server'),
-    publicPath: '',
-    filename: 'index.js',
-    libraryTarget: 'commonjs2',
-    globalObject: 'this'
+    publicPath: '/build/client/',
+    filename: 'index.js'
   },
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -32,9 +30,11 @@ module.exports = {
   plugins: [
     // To learn more about the usage of this plugin, please visit https://webpack.js.org/plugins/module-federation-plugin/
     new ModuleFederationPlugin({
-      name: 'poc',
-      remotes: {
-        grow: 'grow@http://localhost:8080/build/client/remoteEntry.js'
+      name: 'serverRemoteComponents',
+      filename: 'serverRemoteEntry.js',
+      library: { type: 'umd' },
+      exposes: {
+        './Header': './client/Components/Header'
       }
     })
   ],

@@ -16,7 +16,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.m?js$/,
+        test: /\.js?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -30,9 +30,11 @@ module.exports = {
   plugins: [
     // To learn more about the usage of this plugin, please visit https://webpack.js.org/plugins/module-federation-plugin/
     new ModuleFederationPlugin({
-      name: 'poc',
-      remotes: {
-        grow: 'grow@http://localhost:8080/build/client/remoteEntry.js'
+      name: 'remoteComponents',
+      filename: 'remoteEntry.js',
+      library: { type: 'umd' },
+      exposes: {
+        './Header': './client/Components/Header'
       }
     })
   ]
